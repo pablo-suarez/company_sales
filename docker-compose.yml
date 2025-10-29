@@ -1,0 +1,38 @@
+version: '3.9'
+
+services:
+  mongo:
+    image: mongo:8
+    container_name: mongo_db
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: userAdmin
+      MONGO_INITDB_ROOT_PASSWORD: UserPassword
+    command: ["--auth"]
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - nest-network
+
+  api:
+    build: .
+    container_name: nest_api
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      MONGODB_URI: mongodb://userAdmin:UserPassword@mongo:27017/companysales?authSource=admin
+      NODE_ENV: production
+    depends_on:
+      - mongo
+    networks:
+      - nest-network
+
+volumes:
+  mongo-data:
+
+networks:
+  nest-network:
+    driver: bridge
