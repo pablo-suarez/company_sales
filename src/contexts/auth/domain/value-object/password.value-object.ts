@@ -28,11 +28,11 @@ export class Password {
     }
 
     if (password.length < 6) {
-      throw new Error('La contraseña debe tener mínimo 6 carácteres');
+      throw new Error('The password must be at least 6 characters long');
     }
 
     if (password.length > 50) {
-      throw new Error('La contraseña no puede exceder los 50 carácteres');
+      throw new Error('The password cannot exceed 50 characters.');
     }
   }
 }

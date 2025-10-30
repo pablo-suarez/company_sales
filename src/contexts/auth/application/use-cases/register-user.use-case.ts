@@ -17,7 +17,7 @@ export class RegisterUserUseCase {
     const existingUser = await this.userRepository.findByEmail(dto.email);
     
     if (existingUser) {
-      throw new ConflictException('Email ya registrado');
+      throw new ConflictException('Email already used');
     }
 
     const user = User.create(

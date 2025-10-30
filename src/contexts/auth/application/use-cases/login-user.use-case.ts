@@ -16,13 +16,13 @@ export class LoginUserUseCase {
     const user = await this.userRepository.findByEmail(dto.email);
 
     if (!user) {
-        throw new UnauthorizedException('Credenciales no válidas');
+        throw new UnauthorizedException('Invalid credentials');
     }
     
     const isPasswordValid = await user.verifyPassword(dto.password);
     
     if (!isPasswordValid) {
-      throw new UnauthorizedException('Credenciales no válidas');
+      throw new UnauthorizedException('Invalid credentials');
     }
 
     const payload = { 

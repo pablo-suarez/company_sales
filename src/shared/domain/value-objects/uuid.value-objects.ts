@@ -19,7 +19,7 @@ export class Uuid {
 
   private ensureIsValid(value: string): void {
     if (!validate(value)) {
-      throw new Error(`UUID no válido: ${value}`);
+      throw new Error(`Invalid UUID: ${value}`);
     }
   }
 
