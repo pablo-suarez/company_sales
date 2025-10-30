@@ -4,7 +4,7 @@ services:
   mongo:
     image: mongo:8
     container_name: mongo_db
-    restart: always
+    restart: no
     ports:
       - "27017:27017"
     environment:
@@ -19,7 +19,7 @@ services:
   api:
     build: .
     container_name: nest_api
-    restart: always
+    restart: no
     ports:
       - "3000:3000"
     environment:
