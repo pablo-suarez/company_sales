@@ -25,6 +25,7 @@ services:
     environment:
       MONGODB_URI: mongodb://userAdmin:UserPassword@mongo:27017/companysales?authSource=admin
       NODE_ENV: production
+      JWT_SECRET: Vcc$|B5x[G1mt)9]sEW35<CkYLSlPVSC4&@VtF/s
     depends_on:
       - mongo
     networks:
